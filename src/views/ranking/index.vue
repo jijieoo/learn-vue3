@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h2 class="ranking-title">积分排名</h2>
         <el-table
             row-key="id"
             :data="state.rankingList"
@@ -56,3 +57,8 @@ export default {
     },
 };
 </script>
+<style lang="less" scoped>
+.ranking-title {
+    text-align: center;
+}
+</style>

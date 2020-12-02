@@ -10,6 +10,11 @@ const routes = [
         name: 'ranking',
         component: () => import('@/views/ranking/index.vue'),
     },
+    {
+        path: '/match-record',
+        name: 'match-record',
+        component: () => import('@/views/match-record/index.vue'),
+    },
 ];
 
 const router = createRouter({
