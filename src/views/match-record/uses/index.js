@@ -7,7 +7,9 @@ export default function useMatchRecord() {
     // 数据状态
     const state = reactive({
         // 比赛记录
-        records: [],
+        matchRecords: [],
+        // 激活面板
+        activeNames: [],
     });
 
     async function load() {
@@ -19,7 +21,8 @@ export default function useMatchRecord() {
                 message: '请稍后尝试',
             });
         }
-        state.records = res;
+        state.matchRecords = res;
+        state.activeNames = res.map((matchDay) => matchDay.id);
     }
 
     return {

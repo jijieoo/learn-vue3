@@ -28,6 +28,6 @@ export default {
 
 .hero,
 .user {
-    padding: 5 10px;
+    padding: 5px 10px;
 }
 </style>
