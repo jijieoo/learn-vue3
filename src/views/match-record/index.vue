@@ -1,13 +1,9 @@
 <template>
-    <div>
-        <h2 class="match-title">比赛记录</h2>
-        <el-collapse v-model="state.activeNames">
-            <el-collapse-item
-                v-for="matchDay in state.matchRecords"
-                :key="matchDay.id"
-                :title="matchDay.datetime"
-                :name="matchDay.id"
-            >
+    <div class="match">
+        <h2 class="match__title">比赛记录</h2>
+        <div class="match__content">
+            <div v-for="matchDay in state.matchRecords" :key="matchDay.id">
+                <p>{{ matchDay.datetime }}</p>
                 <el-table
                     row-key="id"
                     :data="matchDay.matches"
@@ -15,10 +11,10 @@
                     <el-table-column
                         prop="games"
                         label="#"
-                        width="100"
+                        width="50"
                     >
                     </el-table-column>
-                    <el-table-column label="天辉">
+                    <el-table-column label="天辉" width="400">
                         <template #default="scope">
                             <user-hero
                                 v-for="radiant in scope.row.radiant_records"
@@ -28,7 +24,7 @@
                             ></user-hero>
                         </template>
                     </el-table-column>
-                    <el-table-column label="夜魇">
+                    <el-table-column label="夜魇" width="400">
                         <template #default="scope">
                             <user-hero
                                 v-for="dire in scope.row.dire_records"
@@ -51,15 +47,15 @@
                         label="比赛时长" >
                     </el-table-column>
                 </el-table>
-            </el-collapse-item>
-        </el-collapse>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import { onMounted } from 'vue';
 import {
-    ElTable, ElTableColumn, ElCollapse, ElCollapseItem,
+    ElTable, ElTableColumn,
 } from 'element-plus';
 import UserHero from './user-hero.vue';
 import useMatchRecord from './uses/index';
@@ -68,8 +64,6 @@ export default {
     components: {
         ElTable,
         ElTableColumn,
-        ElCollapse,
-        ElCollapseItem,
         UserHero,
     },
     setup() {
@@ -86,7 +80,15 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.match-title {
-    text-align: center;
+// @define match
+.match {
+    &__title {
+        text-align: center;
+    }
+
+    &__content {
+        width: 1200px;
+        margin: 0 auto;
+    }
 }
 </style>

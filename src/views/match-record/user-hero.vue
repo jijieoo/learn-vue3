@@ -1,7 +1,7 @@
 <template>
-    <div class="user-hero">
-        <div class="hero">{{hero}}</div>
-        <div class="user">{{user}}</div>
+    <div class="info">
+        <div class="info__hero">{{hero}}</div>
+        <div class="info__user">{{user}}</div>
     </div>
 </template>
 
@@ -19,15 +19,17 @@ export default {
     },
 };
 </script>
-<style scoped>
-.user-hero {
+<style lang="less" scoped>
+// @define info
+.info {
     display: inline-block;
     margin: 0 5px;
+    font-size: 12px;
     text-align: center;
-}
 
-.hero,
-.user {
-    padding: 5px 10px;
+    &__hero,
+    &__user {
+        padding: 5px 10px;
+    }
 }
 </style>
