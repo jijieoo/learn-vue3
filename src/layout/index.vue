@@ -5,6 +5,7 @@
         >
             <el-menu-item index="/ranking">积分排名</el-menu-item>
             <el-menu-item index="/match-record">比赛记录</el-menu-item>
+            <el-menu-item index="/match-room">比赛房间</el-menu-item>
         </el-menu>
         <div>
             <router-view></router-view>

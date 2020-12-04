@@ -15,6 +15,11 @@ const routes = [
         name: 'match-record',
         component: () => import('@/views/match-record/index.vue'),
     },
+    {
+        path: '/match-room',
+        name: 'match-room',
+        component: () => import('@/views/match-room/index.vue'),
+    },
 ];
 
 const router = createRouter({
