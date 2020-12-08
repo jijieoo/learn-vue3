@@ -1,3 +1,5 @@
 # 打包文件目录
 /dist
 /src/assets
+
+/public
