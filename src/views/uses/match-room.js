@@ -1,23 +1,46 @@
+import { reactive } from 'vue';
+import io from 'socket.io-client';
+
 export default function useMatchRoom() {
+    const state = reactive({
+        onlineUsers: [],
+    });
+
     function initSocket() {
-        const socket = new WebSocket('ws://localhost:3000', ['token=123;', 'id=444;']);
-
-        socket.onopen = () => {
+        const socket = io('http://localhost:3000');
+        socket.on('connect', () => {
+            console.log('Connected');
             console.log(socket);
-            socket.send(
-                JSON.stringify({
-                    event: 'events',
-                    data: 'test',
-                }),
-            );
-        };
 
-        socket.onmessage = (event) => {
-            console.log(event);
-        };
+            socket.emit('events', {
+                test: 'test',
+            });
+            socket.emit('identity', 0, (response) => console.log('Identity:', response));
+        });
+
+        socket.on('events', (data) => {
+            console.log('event', data);
+        });
+
+        socket.on('notice', (data) => {
+            console.log('notice', data);
+        });
+
+        socket.on('allUsers', (data) => {
+            console.log('allUsers', data);
+        });
+
+        socket.on('exception', (data) => {
+            console.log('event', data);
+        });
+
+        socket.on('disconnect', () => {
+            console.log('Disconnected');
+        });
     }
 
     return {
         initSocket,
+        state,
     };
 }
